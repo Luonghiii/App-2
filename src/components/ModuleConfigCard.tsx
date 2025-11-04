@@ -23,7 +23,7 @@ interface ModuleData extends ModuleInfo {
 
 // The list of modules with their corresponding App Store IDs, sorted alphabetically
 const initialModules: ModuleInfo[] = [
-    { name: 'Locket Gold', fileName: 'LocketGold.sgmodule', appId: '1600525061', working: true },
+    { name: 'Locket Gold', fileName: 'LocketGold.sgmodule', appId: '1600525061', iconUrl: 'https://i.ibb.co/q322N0H9/IMG-8793.jpg', working: true },
 ];
 
 
@@ -145,8 +145,8 @@ const ModuleConfigCard: FC<ModuleConfigCardProps> = ({ t }) => {
                             {filteredModules.map(module => (
                                 <div key={module.fileName} className="bg-black/5 dark:bg-slate-800/50 p-2 rounded-lg flex items-center justify-between gap-4 hover:bg-black/10 dark:hover:bg-white/5 transition-colors">
                                     <div className="flex items-center gap-3 min-w-0">
-                                        {module.fetchedIconUrl || module.iconUrl ? (
-                                            <img src={module.fetchedIconUrl || module.iconUrl} alt={module.name} className="w-10 h-10 rounded-lg object-cover flex-shrink-0" loading="lazy" />
+                                        {module.iconUrl || module.fetchedIconUrl ? (
+                                            <img src={module.iconUrl || module.fetchedIconUrl} alt={module.name} className="w-10 h-10 rounded-lg object-cover flex-shrink-0" loading="lazy" />
                                         ) : (
                                             <div className="w-10 h-10 rounded-lg bg-slate-200 dark:bg-slate-700 flex items-center justify-center flex-shrink-0">
                                                 <SettingsIcon className="w-6 h-6 text-slate-500 dark:text-slate-400" />
