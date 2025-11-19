@@ -1,3 +1,4 @@
+
 import React, { FC, useEffect, useState, useMemo } from 'react';
 import { GlowingBorderCard } from './common';
 import type { Translation } from '../data/translations';
@@ -105,18 +106,34 @@ const ModuleConfigCard: FC<ModuleConfigCardProps> = ({ t }) => {
 
                 <div>
                     <h3 className="text-lg font-semibold text-slate-700 dark:text-slate-200 mb-3">{t.configurationTitle}</h3>
-                    <div className="bg-black/5 dark:bg-slate-800/50 p-3 rounded-lg flex items-center justify-between gap-4 hover:bg-black/10 dark:hover:bg-white/5 transition-colors">
-                        <div className="flex items-center gap-3">
-                            <div className="w-10 h-10 rounded-lg bg-slate-200 dark:bg-slate-700 flex items-center justify-center">
-                                <ShieldIcon className="w-6 h-6 text-green-500 dark:text-green-400" />
+                    <div className="space-y-3">
+                        <div className="bg-black/5 dark:bg-slate-800/50 p-3 rounded-lg flex items-center justify-between gap-4 hover:bg-black/10 dark:hover:bg-white/5 transition-colors">
+                            <div className="flex items-center gap-3">
+                                <div className="w-10 h-10 rounded-lg bg-slate-200 dark:bg-slate-700 flex items-center justify-center">
+                                    <ShieldIcon className="w-6 h-6 text-green-500 dark:text-green-400" />
+                                </div>
+                                <p className="font-semibold text-slate-700 dark:text-slate-200">{t.adBlockConfig}</p>
                             </div>
-                            <p className="font-semibold text-slate-700 dark:text-slate-200">{t.adBlockConfig}</p>
+                            <button
+                            onClick={() => handleAddConfig("shadowrocket://config/add/https://raw.githubusercontent.com/Luonghiii/Config/refs/heads/main/Module/ads.sgmodule")}
+                            className="flex-shrink-0 px-4 py-2 bg-purple-500/20 backdrop-blur-md border border-purple-400/50 hover:bg-purple-500/30 rounded-lg text-white font-semibold transition-colors text-sm">
+                                {t.addConfig}
+                            </button>
                         </div>
-                        <button
-                           onClick={() => handleAddConfig("shadowrocket://config/add/https://raw.githubusercontent.com/Luonghiii/Config/refs/heads/main/Module/ads.sgmodule")}
-                           className="flex-shrink-0 px-4 py-2 bg-purple-500/20 backdrop-blur-md border border-purple-400/50 hover:bg-purple-500/30 rounded-lg text-white font-semibold transition-colors text-sm">
-                            {t.addConfig}
-                        </button>
+
+                        <div className="bg-black/5 dark:bg-slate-800/50 p-3 rounded-lg flex items-center justify-between gap-4 hover:bg-black/10 dark:hover:bg-white/5 transition-colors">
+                            <div className="flex items-center gap-3">
+                                <div className="w-10 h-10 rounded-lg bg-slate-200 dark:bg-slate-700 flex items-center justify-center">
+                                    <ShieldIcon className="w-6 h-6 text-amber-500 dark:text-amber-400" />
+                                </div>
+                                <p className="font-semibold text-slate-700 dark:text-slate-200">{t.locketGoldConfig}</p>
+                            </div>
+                            <button
+                            onClick={() => handleAddConfig("https://luonghiii.github.io/File/Plist/Locketgold.mobileconfig")}
+                            className="flex-shrink-0 px-4 py-2 bg-purple-500/20 backdrop-blur-md border border-purple-400/50 hover:bg-purple-500/30 rounded-lg text-white font-semibold transition-colors text-sm">
+                                {t.install}
+                            </button>
+                        </div>
                     </div>
                 </div>
 

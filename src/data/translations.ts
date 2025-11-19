@@ -1,3 +1,4 @@
+
 export const translations = {
   en: {
     // Login Guide
@@ -62,6 +63,7 @@ export const translations = {
     moduleNoteContent: "Modules require a VPN to function. If you encounter errors, check for module conflicts or try deleting and reinstalling the app.",
     configurationTitle: "Configuration",
     adBlockConfig: "Original Config (recommended for the best experience)",
+    locketGoldConfig: "Locket Gold Config (Fix crash)",
     moduleListTitle: "Module List",
     addConfig: "Add Config",
     addModule: "Add Module",
@@ -209,6 +211,7 @@ export const translations = {
     moduleNoteContent: "Module cần bật VPN để hoạt động. Nếu gặp lỗi, kiểm tra xung đột giữa các module hoặc thử xóa app và cài lại.",
     configurationTitle: "Cấu hình",
     adBlockConfig: "Cấu hình gốc (nên cài để có trải nghiệm tốt nhất)",
+    locketGoldConfig: "Cấu hình Locket Gold (Sửa lỗi văng)",
     moduleListTitle: "Danh sách Module",
     addConfig: "Thêm cấu hình",
     addModule: "Thêm Module",
