@@ -82,25 +82,18 @@ export const InstructionModal: FC<{ isOpen: boolean; onClose: () => void; t: Tra
     if (!isOpen) return null;
 
     return (
-        <div className="fixed inset-0 bg-black bg-opacity-75 flex items-center justify-center z-50 p-4 animate-fade-in">
-             <style>{`
-                @keyframes fade-in {
-                    from { opacity: 0; transform: scale(0.95); }
-                    to { opacity: 1; transform: scale(1); }
-                }
-                .animate-fade-in { animation: fade-in 0.3s ease-out forwards; }
-            `}</style>
-            <div className="bg-slate-50 dark:bg-[#161b22] border border-slate-200 dark:border-slate-700 rounded-2xl shadow-lg w-full max-w-md max-h-[90vh] flex flex-col text-slate-800 dark:text-white" onClick={e => e.stopPropagation()}>
-                <main ref={contentRef} onScroll={checkScrollPosition} className="p-1 md:p-2 overflow-y-auto custom-scrollbar">
+        <div className="instruction-overlay animate-fade-in">
+            <div className="instruction-modal" onClick={e => e.stopPropagation()}>
+                <main ref={contentRef} onScroll={checkScrollPosition} className="p-1 md:p-2 overflow-y-auto custom-scrollbar flex-1">
                    <div className="p-4 md:p-6">
                     <LoginGuide t={t} language={language} />
                    </div>
                 </main>
-                <footer className="p-4 border-t border-slate-200 dark:border-slate-700 flex justify-between items-center flex-shrink-0">
-                    <button onClick={onClose} className="px-4 py-2 bg-black/5 dark:bg-white/10 backdrop-blur-md border border-black/10 dark:border-white/20 hover:bg-black/10 dark:hover:bg-white/20 rounded-lg text-slate-700 dark:text-white font-semibold transition-colors text-sm">
+                <footer className="modal-footer">
+                    <button onClick={onClose} className="btn-secondary">
                         {t.instructionModalGotIt}
                     </button>
-                    <button onClick={handleNext} className="px-5 py-2 bg-purple-500/20 backdrop-blur-md border border-purple-400/50 hover:bg-purple-500/30 rounded-lg text-white font-semibold transition-colors text-sm">
+                    <button onClick={handleNext} className="btn-primary">
                         {isAtEnd ? t.instructionModalFinish : t.instructionModalNext}
                     </button>
                 </footer>
