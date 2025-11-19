@@ -26,6 +26,7 @@ type Theme = 'light' | 'dark';
 
 const App: FC = () => {
   const [isLoading, setIsLoading] = useState(true);
+  const [progress, setProgress] = useState(0);
   const [currentTime, setCurrentTime] = useState(new Date());
   const [language, setLanguage] = useState<Language>(() => {
     const savedLang = localStorage.getItem('language');
@@ -58,7 +59,16 @@ const App: FC = () => {
   }, [theme]);
 
   useEffect(() => {
-    const loadingTimer = setTimeout(() => setIsLoading(false), 2000);
+    const timer = setInterval(() => {
+      setProgress((prev) => {
+        if (prev >= 100) {
+          clearInterval(timer);
+          setTimeout(() => setIsLoading(false), 500);
+          return 100;
+        }
+        return prev + 1;
+      });
+    }, 20);
 
     const timerId = setInterval(() => setCurrentTime(new Date()), 1000);
     const refreshIntervalId = setInterval(() => {
@@ -68,7 +78,7 @@ const App: FC = () => {
     }, 30000); 
 
     return () => {
-        clearTimeout(loadingTimer);
+        clearInterval(timer);
         clearInterval(timerId);
         clearInterval(refreshIntervalId);
     };
@@ -114,7 +124,7 @@ const App: FC = () => {
 
 
   if (isLoading) {
-    return <LoadingScreen />;
+    return <LoadingScreen progress={progress} language={language} />;
   }
 
   return (
