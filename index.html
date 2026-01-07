@@ -3,438 +3,106 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Module học tập</title>
-    <link rel="icon" type="image/png" href="https://i.ibb.co/23Hj0sKY/IMG-9083.png" />
+    <title>Kho Apple ID Tết 2026 - CSA Group</title>
+    <link rel="icon" type="image/png" href="https://thongtin.yuichycsa.id.vn/image/logo.png" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
       tailwind.config = {
         darkMode: 'class',
+        theme: {
+          extend: {
+            colors: {
+              'csa-gold': '#FFD700',
+              'csa-red': '#d63031',
+              'csa-green': '#00b894',
+            }
+          }
+        }
       }
     </script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <style>
+        /* ==== GLOBAL RESET & THEME TET 2026 ==== */
+        :root {
+            --csa-bg-color: #800000;
+            --csa-panel: rgba(100, 0, 0, 0.6); 
+            --csa-border: rgba(255, 215, 0, 0.5); 
+            --csa-text: #ffffff;
+            --csa-muted: #ffeaa7; 
+            --csa-red: #d63031;     
+            --csa-green: #00b894;   
+            --csa-gold: #FFD700;    
+            --csa-radius: 16px;
+            --csa-font: system-ui, -apple-system, sans-serif;
+        }
+
+        /* Hiển thị nền đỏ ngay từ đầu */
+        html, body {
+            background-color: var(--csa-bg-color) !important;
+        }
+
         body {
-            font-family: 'Inter', sans-serif;
-        }
-        @keyframes animated-gradient {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-        .animated-border {
-            background: linear-gradient(-45deg, #f87171, #fb923c, #facc15, #4ade80, #38bdf8, #818cf8, #c084fc);
-            background-size: 400% 400%;
-            animation: animated-gradient 5s ease infinite;
-        }
-        @keyframes move-blob {
-            0% { transform: scale(1) translate(0px, 0px); }
-            33% { transform: scale(1.1) translate(30px, -50px); }
-            66% { transform: scale(0.9) translate(-20px, 20px); }
-            100% { transform: scale(1) translate(0px, 0px); }
-        }
-        .animate-blob-1 { animation: move-blob 15s infinite ease-in-out; }
-        .animate-blob-2 { animation: move-blob 18s infinite ease-in-out -5s; }
-        .animate-blob-3 { animation: move-blob 20s infinite ease-in-out -10s; }
-
-        /* Custom scrollbar for webkit browsers */
-        .custom-scrollbar::-webkit-scrollbar {
-            width: 8px;
-        }
-        .dark .custom-scrollbar::-webkit-scrollbar-track {
-            background: rgba(22, 27, 34, 0.5); /* A dark color matching the card background */
-            border-radius: 10px;
-        }
-        .custom-scrollbar::-webkit-scrollbar-track {
-            background: rgba(229, 231, 235, 0.5);
-            border-radius: 10px;
-        }
-        .dark .custom-scrollbar::-webkit-scrollbar-thumb {
-            background: #4b5563; /* A slightly lighter gray */
-            border-radius: 10px;
-        }
-        .custom-scrollbar::-webkit-scrollbar-thumb {
-            background: #9ca3af;
-            border-radius: 10px;
-        }
-        .dark .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-            background: #6b7280; /* Lighter on hover */
-        }
-        .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-            background: #6b7280;
+            margin: 0; padding: 0;
+            font-family: var(--csa-font);
+            color: var(--csa-text);
+            min-height: 100vh;
+            display: flex; flex-direction: column; align-items: center;
+            overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 50% 0%, #d10000 0%, transparent 60%),
+                repeating-linear-gradient(45deg, rgba(255, 215, 0, 0.05) 0px, rgba(255, 215, 0, 0.05) 1px, transparent 1px, transparent 10px),
+                repeating-linear-gradient(-45deg, rgba(255, 215, 0, 0.05) 0px, rgba(255, 215, 0, 0.05) 1px, transparent 1px, transparent 10px);
+            background-attachment: fixed;
         }
 
-        /* Additional Styles */
-        .glass-card {
-            background: rgba(255, 255, 255, 0.4);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.5);
-            border-radius: 1rem;
-            transition: all 0.3s ease;
-            transform-style: preserve-3d;
-            position: relative;
-        }
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: rgba(0, 0, 0, 0.3); }
+        ::-webkit-scrollbar-thumb { background: var(--csa-gold); border-radius: 4px; }
 
-        .dark .glass-card {
-            background: rgba(22, 27, 34, 0.4);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+        .lantern-container { position: fixed; top: -20px; z-index: 5; pointer-events: none; display: flex; justify-content: center; }
+        .lantern-left { left: 5%; }
+        .lantern-right { right: 5%; }
+        .lantern {
+            position: relative; width: 80px; height: 100px;
+            background: radial-gradient(circle, #ff5e62, #ff0000);
+            border-radius: 40px; box-shadow: 0 5px 25px rgba(255, 0, 0, 0.5);
+            animation: swing 3s infinite ease-in-out; transform-origin: top center;
         }
+        .lantern::before { content: ''; position: absolute; top: -30px; left: 50%; transform: translateX(-50%); width: 4px; height: 30px; background: #b71540; }
+        .lantern::after { content: ''; position: absolute; bottom: -20px; left: 50%; transform: translateX(-50%); width: 6px; height: 20px; background: #ffd700; box-shadow: 0 5px 10px rgba(255, 215, 0, 0.5); }
+        .lantern-text { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 24px; font-weight: bold; color: #ffd700; }
+        @keyframes swing { 0%,100%{transform:rotate(-6deg)} 50%{transform:rotate(6deg)} }
 
-        .glass-card::before {
-            content: '';
-            position: absolute;
-            top: -2px; left: -2px; right: -2px; bottom: -2px;
-            background: linear-gradient(45deg, #f87171, #818cf8, #4ade80);
-            border-radius: calc(1rem + 2px);
-            z-index: -1;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-            filter: blur(8px);
-        }
+        .horse-track { position: fixed; bottom: 0; left: 0; width: 100%; height: 60px; pointer-events: none; z-index: 4; overflow: hidden; }
+        .running-horse { position: absolute; bottom: 10px; color: var(--csa-gold); font-size: 35px; white-space: nowrap; transition: left 10s linear; width: max-content; filter: drop-shadow(0 0 10px rgba(255,215,0,0.8)); will-change: left; }
 
-        .glass-card:hover::before {
-            opacity: 0.7;
+        .gold-shimmer {
+            background: linear-gradient(to right, #bf953f, #fcf6ba, #b38728, #fbf5b7, #aa771c);
+            -webkit-background-clip: text; background-clip: text; color: transparent;
+            background-size: 200%; animation: shine 3s infinite linear;
         }
-        
-        /* Redesigned Horizontal Profile Card */
-        .profile-card-horizontal {
-            width: 100%;
-            max-width: 100%;
-            background: rgba(241, 245, 249, 0.6); /* Light mode glass */
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border-radius: 24px;
-            padding: 24px;
-            display: flex;
-            align-items: center;
-            gap: 24px;
-            border: 1px solid rgba(0, 0, 0, 0.1);
-            box-shadow: 
-                0 8px 32px 0 rgba(31, 38, 135, 0.1),
-                inset 0 0 60px rgba(0, 0, 0, 0.05);
-            transition: all 0.3s ease;
-            transform-style: preserve-3d;
-            position: relative;
-        }
+        @keyframes shine { to { background-position: 200% center; } }
 
-        .dark .profile-card-horizontal {
-            background: rgba(22, 27, 34, 0.3); /* Darker glass for dark mode */
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            box-shadow: 
-                0 8px 32px 0 rgba(31, 38, 135, 0.37),
-                inset 0 0 60px rgba(255, 255, 255, 0.05);
-        }
+        #fireworksCanvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1; }
+        .falling-container { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 2; overflow: hidden; }
+        .falling-item { position: absolute; top: -50px; animation: fall linear forwards; font-size: 20px; }
+        @keyframes fall { to { transform: translateY(110vh) rotate(360deg); } }
 
-        .glow-horizontal {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            pointer-events: none;
-            border-radius: 24px;
-            opacity: 0;
-            transition: opacity 0.3s ease;
+        .csa-box { background: var(--csa-panel); border: 1px solid var(--csa-border); border-radius: var(--csa-radius); padding: 24px; display: flex; flex-direction: column; backdrop-filter: blur(10px); }
+        .csa-toast {
+            position: fixed; top: 24px; right: 24px; z-index: 10000;
+            background: rgba(183, 21, 64, 0.95); border: 2px solid var(--csa-gold);
+            border-radius: 12px; padding: 16px 20px; display: flex; align-items: center; gap: 12px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5); transform: translateX(120%);
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); backdrop-filter: blur(10px);
         }
+        .csa-toast.show { transform: translateX(0); }
 
-        .profile-card-horizontal:hover .glow-horizontal {
-            opacity: 1;
-        }
-
-        /* Avatar Styles */
-        .avatar-horizontal {
-            width: 90px;
-            height: 90px;
-            border-radius: 50%;
-            border: 3px solid rgba(255, 255, 255, 0.3);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
-            transform: translateZ(30px);
-            transition: transform 0.3s ease;
-            position: relative;
-            overflow: hidden;
-            flex-shrink: 0;
-        }
-
-        .dark .avatar-horizontal {
-            border: 3px solid rgba(255, 255, 255, 0.3);
-        }
-
-        .light .avatar-horizontal {
-            border: 3px solid rgba(255, 255, 255, 0.8);
-        }
-
-        .avatar-horizontal img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .avatar-horizontal::after {
-            content: '';
-            position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: linear-gradient(
-                45deg,
-                transparent,
-                rgba(255, 255, 255, 0.3),
-                transparent
-            );
-            transform: rotate(45deg);
-            animation: shine 3s infinite;
-        }
-
-        @keyframes shine {
-            0%, 100% { transform: translateX(-100%) translateY(-100%) rotate(45deg); }
-            50% { transform: translateX(100%) translateY(100%) rotate(45deg); }
-        }
-
-        /* Info Section */
-        .info-horizontal {
-            text-align: left;
-            transform: translateZ(20px);
-        }
-
-        .name-horizontal {
-            font-size: 24px;
-            font-weight: 700;
-            margin-bottom: 4px;
-            text-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
-        }
-
-        .description-horizontal {
-            font-size: 14px;
-            margin-bottom: 16px;
-            line-height: 1.5;
-        }
-
-        .social-icons-horizontal {
-            display: flex;
-            justify-content: flex-start;
-            gap: 12px;
-        }
-
-        /* Social Icons */
-        .social-icon {
-            width: 40px;
-            height: 40px;
-            background: rgba(226, 232, 240, 0.7);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            border: 1px solid rgba(0, 0, 0, 0.1);
-            cursor: pointer;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .dark .social-icon {
-            background: rgba(51, 65, 85, 0.5);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-        }
-
-        .social-icon:hover {
-            transform: translateY(-4px) scale(1.1);
-            background: rgba(255, 255, 255, 0.8);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-        }
-
-        .dark .social-icon:hover {
-            background: rgba(255, 255, 255, 0.25);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
-        }
-
-        .social-icon svg {
-            width: 20px;
-            height: 20px;
-            filter: drop-shadow(0 1px 3px rgba(0, 0, 0, 0.15));
-        }
-
-        /* --- Instruction Modal CSS --- */
-        /* Animation */
-        @keyframes fade-in {
-            from { opacity: 0; transform: scale(0.95); }
-            to { opacity: 1; transform: scale(1); }
-        }
-
-        .animate-fade-in {
-            animation: fade-in 0.3s ease-out forwards;
-        }
-
-        /* Modal Container */
-        .instruction-overlay {
-            position: fixed;
-            inset: 0;
-            background-color: rgba(0, 0, 0, 0.75); /* bg-black bg-opacity-75 */
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 50;
-            padding: 1rem;
-        }
-
-        .instruction-modal {
-            background-color: #f8fafc; /* bg-slate-50 */
-            border: 1px solid #e2e8f0; /* border-slate-200 */
-            border-radius: 1rem; /* rounded-2xl */
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
-            width: 100%;
-            max-width: 32rem; /* max-w-lg */
-            max-height: 90vh;
-            display: flex;
-            flex-direction: column;
-            color: #1e293b; /* text-slate-800 */
-        }
-
-        .dark .instruction-modal {
-            background-color: #161b22;
-            border-color: #334155; /* border-slate-700 */
-            color: #ffffff;
-        }
-
-        /* Header & Tabs */
-        .modal-header {
-            padding: 1rem 1.5rem; /* p-4 md:p-6 */
-            border-bottom: 1px solid #e2e8f0;
-        }
-        .dark .modal-header {
-            border-bottom-color: #1e293b;
-        }
-
-        .tabs-container {
-            margin-top: 1rem;
-            position: relative;
-        }
-
-        .tabs-wrapper {
-            display: flex;
-            justify-content: space-around;
-            align-items: center;
-            border: 1px solid #e2e8f0;
-            background-color: #f1f5f9; /* bg-slate-100 */
-            padding: 0.25rem;
-            border-radius: 0.5rem;
-        }
-        .dark .tabs-wrapper {
-            border-color: #334155;
-            background-color: rgba(30, 41, 59, 0.5);
-        }
-
-        .tab-button {
-            flex: 1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 0.5rem;
-            padding: 0.5rem;
-            border-radius: 0.375rem;
-            font-size: 0.875rem;
-            font-weight: 600;
-            transition: all 0.3s;
-        }
-
-        .tab-button.active {
-            color: #9333ea; /* text-purple-600 */
-        }
-        .dark .tab-button.active {
-            color: #c084fc; /* text-purple-400 */
-        }
-
-        .tab-indicator {
-            position: absolute;
-            bottom: 0;
-            height: 4px;
-            background-color: #a855f7; /* bg-purple-500 */
-            border-radius: 9999px;
-            transition: all 0.3s ease-out;
-        }
-
-        /* Steps Styling */
-        .warning-box {
-            background-color: #44222a;
-            border: 1px solid rgba(239, 68, 68, 0.5); /* red-500/50 */
-            border-radius: 1rem;
-            padding: 1rem;
-        }
-
-        .ban-box {
-            background-color: #292524;
-            border: 1px solid #334155;
-            border-radius: 1rem;
-            padding: 1rem;
-        }
-
-        .step-box-dark {
-            background-color: #292524;
-            border: 1px solid #334155;
-            border-radius: 0.5rem;
-            padding: 0.75rem;
-        }
-
-        .step-box-green {
-            background-color: #164e3b;
-            border: 1px solid rgba(34, 197, 94, 0.5); /* green-500/50 */
-            border-radius: 0.5rem;
-            padding: 0.75rem;
-        }
-
-        .step-box-amber {
-            background-color: #4a3a1d;
-            border: 1px solid rgba(245, 158, 11, 0.5); /* amber-500/50 */
-            border-radius: 0.5rem;
-            padding: 0.75rem;
-            margin-top: 1rem;
-        }
-
-        /* Footer */
-        .modal-footer {
-            padding: 1rem;
-            border-top: 1px solid #e2e8f0;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        .dark .modal-footer {
-            border-top-color: #1e293b;
-        }
-
-        .btn-secondary {
-            padding: 0.5rem 1rem;
-            background-color: rgba(0, 0, 0, 0.05);
-            border: 1px solid rgba(0, 0, 0, 0.1);
-            border-radius: 9999px;
-            font-weight: 600;
-            font-size: 0.875rem;
-            color: #334155;
-        }
-        .dark .btn-secondary {
-            background-color: rgba(255, 255, 255, 0.1);
-            border-color: rgba(255, 255, 255, 0.2);
-            color: white;
-        }
-
-        .btn-primary {
-            padding: 0.5rem 1.25rem;
-            background-color: rgba(168, 85, 247, 0.2); /* purple-500/20 */
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(192, 132, 252, 0.5); /* purple-400/50 */
-            border-radius: 9999px;
-            color: white;
-            font-weight: 600;
-            font-size: 0.875rem;
-            transition: background-color 0.3s;
-        }
-        .btn-primary:hover {
-            background-color: rgba(168, 85, 247, 0.3);
-        }
+        .csa-controls { position: fixed; bottom: 20px; right: 20px; z-index: 9000; display: flex; flex-direction: column; gap: 10px; }
+        .csa-ctrl-btn { width: 50px; height: 50px; background: rgba(180, 0, 0, 0.8); border-radius: 50%; display: grid; place-items: center; cursor: pointer; border: 2px solid var(--csa-gold); transition: 0.2s; color: var(--csa-gold); box-shadow: 0 0 15px rgba(255, 215, 0, 0.4); font-size: 20px; }
+        .csa-ctrl-btn:hover { background: rgba(255, 215, 0, 0.2); transform: scale(1.1); }
+        .csa-ctrl-btn.playing { border-color: var(--csa-green); color: var(--csa-green); animation: spin-slow 8s linear infinite; }
+        @keyframes spin-slow { 100% { transform: rotate(360deg); } }
     </style>
 <script type="importmap">
 {
@@ -448,8 +116,9 @@
 }
 </script>
 </head>
-<body class="bg-slate-50 dark:bg-[#0d1117]">
+<body class="custom-scrollbar">
     <div id="root"></div>
     <script type="module" src="/src/index.tsx"></script>
+    <script src="https://www.youtube.com/iframe_api"></script>
 </body>
 </html>

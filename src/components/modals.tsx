@@ -86,7 +86,7 @@ export const InstructionModal: FC<{ isOpen: boolean; onClose: () => void; t: Tra
             <div className="instruction-modal" onClick={e => e.stopPropagation()}>
                 <main ref={contentRef} onScroll={checkScrollPosition} className="p-1 md:p-2 overflow-y-auto custom-scrollbar flex-1">
                    <div className="p-4 md:p-6">
-                    <LoginGuide t={t} language={language} />
+                    <LoginGuide t={t} />
                    </div>
                 </main>
                 <footer className="modal-footer">

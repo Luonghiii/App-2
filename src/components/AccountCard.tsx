@@ -1,97 +1,98 @@
-import React, { FC, useState, useCallback, useMemo } from 'react';
-import { CheckIcon, UserIcon, KeyIcon, ClockIcon, CopyIcon } from './icons';
-import { formatTimeAgo } from '../utils/time';
+import React, { FC } from 'react';
 import type { Account } from '../types';
-import type { Translation, Language } from '../data/translations';
-
-const CopyButton: FC<{ textToCopy: string, label: string; icon: React.ReactElement; t: Translation; onCopy: () => void }> = ({ textToCopy, label, icon, t, onCopy }) => {
-    const [isCopied, setIsCopied] = useState(false);
-
-    const handleCopy = useCallback(() => {
-        navigator.clipboard.writeText(textToCopy).then(() => {
-            setIsCopied(true);
-            onCopy();
-            setTimeout(() => setIsCopied(false), 2000);
-        });
-    }, [textToCopy, onCopy]);
-
-    return (
-        <button
-            onClick={handleCopy}
-            className={`group w-full flex items-center justify-center gap-2.5 py-3 rounded-xl transition-all duration-300 font-semibold text-sm ${isCopied ? 'bg-emerald-500 text-white' : 'bg-black/5 dark:bg-white/10 border border-black/10 dark:border-white/20 hover:bg-black/10 dark:hover:bg-white/20 text-slate-700 dark:text-slate-200'}`}
-        >
-            {isCopied ? (
-                <>
-                    <CheckIcon className="w-5 h-5" />
-                    <span>{t.copied}</span>
-                </>
-            ) : (
-                <>
-                    {icon}
-                    <span className="flex items-center gap-1.5">
-                        {label}
-                        <CopyIcon className="w-4 h-4 text-slate-500 dark:text-slate-400 group-hover:text-slate-800 dark:group-hover:text-white transition-colors" />
-                    </span>
-                </>
-            )}
-        </button>
-    );
-}
+import type { Translation } from '../data/translations';
 
 interface AccountCardProps {
     account: Account;
     t: Translation;
-    language: Language;
     onCopySuccess: (message: string) => void;
-    currentTime: Date;
 }
 
-const AccountCard: FC<AccountCardProps> = ({ account, t, language, onCopySuccess, currentTime }) => {
-  const timeAgo = useMemo(() => {
-    return formatTimeAgo(account.lastUpdate, language, currentTime);
-  }, [account.lastUpdate, language, currentTime]);
+const AccountCard: FC<AccountCardProps> = ({ account, t, onCopySuccess }) => {
+    
+    const handleCopy = (text: string, label: string) => {
+        navigator.clipboard.writeText(text).then(() => {
+            const tetWishes = [
+                "Chúc bạn năm mới Vạn Sự Như Ý! 🌸",
+                "Tiền vô như nước, Tiền ra nhỏ giọt! 💰",
+                "Mã đáo thành công, tấn tài tấn lộc! 🐎",
+                "Sức khỏe dồi dào, an khang thịnh vượng! ❤️",
+                "Năm mới thắng lợi mới, game nào cũng Win! 🎮",
+                "Lộc biếc mai vàng, xuân sang hạnh phúc! 🌼",
+                "Phát tài phát lộc, sung túc cả năm! 🧧"
+            ];
+            const randomWish = tetWishes[Math.floor(Math.random() * tetWishes.length)];
+            onCopySuccess(`Đã copy ${label}! ${randomWish}`);
+        });
+    };
 
-  return (
-    <div
-      className="bg-transparent rounded-xl p-5 relative border border-black/10 dark:border-slate-800 hover:border-slate-700 transition-colors"
-    >
-      <div className="absolute -top-3 -left-3 w-8 h-8 bg-purple-600 rounded-full flex items-center justify-center text-sm font-bold text-white border-4 border-white dark:border-[#1e293b]">
-        {account.id}
-      </div>
-      <div className="flex justify-between items-center mb-3">
-        <h2 className="text-lg font-bold text-slate-800 dark:text-slate-100">{t.appleAccount}</h2>
-        <div className="flex items-center gap-2 px-3 py-1 text-xs font-bold text-green-600 dark:text-green-300 bg-green-500/10 border border-green-500/30 rounded-full">
-          <CheckIcon className="w-3 h-3" />
-          <span>{t.work}</span>
-        </div>
-      </div>
-      <p className="text-center font-semibold text-lg bg-clip-text text-transparent bg-gradient-to-r from-purple-500 to-pink-500 mb-5">
-        {account.email}
-      </p>
+    return (
+        <div className="csa-acc-card" style={{
+            background: 'rgba(50, 0, 0, 0.6)',
+            border: '1px solid var(--csa-border)',
+            borderRadius: '18px', overflow: 'hidden',
+            backdropFilter: 'blur(8px)',
+            transition: 'transform 0.3s ease, boxShadow 0.3s ease',
+            display: 'flex', flexDirection: 'column',
+            position: 'relative'
+        }}>
+             {/* Decor corner */}
+             <div style={{
+                position: 'absolute', top: 0, left: 0,
+                width: '40px', height: '40px',
+                background: 'linear-gradient(135deg, var(--csa-gold) 50%, transparent 50%)',
+                opacity: 0.8, pointerEvents: 'none', zIndex: 2
+             }} />
 
-      <div className="grid grid-cols-2 gap-3 mb-4">
-        <CopyButton t={t} textToCopy={account.email} label={t.copyAccount} icon={<UserIcon className="w-5 h-5"/>} onCopy={() => onCopySuccess(t.copyAccountSuccess)} />
-        <CopyButton t={t} textToCopy={account.password_plain} label={t.copyPassword} icon={<KeyIcon className="w-5 h-5"/>} onCopy={() => onCopySuccess(t.copyPasswordSuccess)} />
-      </div>
+            <div className="csa-acc-header" style={{
+                 background: 'linear-gradient(90deg, #c0392b, #d35400)',
+                 padding: '10px 16px', color: '#fff', fontWeight: 700, fontSize: '13px',
+                 display: 'flex', justifyContent: 'space-between', alignItems: 'center',
+                 borderBottom: '1px solid rgba(255,255,255,0.2)'
+            }}>
+                <span><i className="fa-brands fa-apple"></i> Apple ID #{account.id}</span>
+                <span>{account.flag} {account.nation}</span>
+            </div>
 
-      <div className="grid grid-cols-2 gap-3">
-        <div className="bg-black/5 dark:bg-slate-800/50 p-3 rounded-lg flex items-center gap-3">
-            <span className="text-2xl leading-none">{account.flag}</span>
-            <div>
-                <p className="text-xs text-slate-500 dark:text-slate-400">{t.nation}</p>
-                <p className="text-sm font-semibold text-slate-700 dark:text-slate-200">{account.nation}</p>
+            <div className="csa-acc-body" style={{ padding: '16px' }}>
+                <div className="csa-field" style={{ marginBottom: '12px' }}>
+                    <span className="csa-label" style={{ fontSize: '11px', textTransform: 'uppercase', color: 'var(--csa-muted)', marginBottom: '4px', display: 'block', fontWeight: 600 }}>Email</span>
+                    <div 
+                        className="csa-input-wrap" 
+                        onClick={() => handleCopy(account.email, "Email")}
+                        style={{ display: 'flex', alignItems: 'center', background: 'rgba(0, 0, 0, 0.4)', border: '1px solid var(--csa-border)', borderRadius: '10px', cursor: 'pointer' }}
+                    >
+                        <span className="csa-value" style={{ flex: 1, padding: '10px 12px', fontFamily: 'monospace', fontSize: '14px', color: 'var(--csa-gold)', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', fontWeight: 'bold' }}>
+                            {account.email}
+                        </span>
+                        <i className="fa-regular fa-copy csa-copy-icon" style={{ padding: '0 12px', color: 'var(--csa-green)' }}></i>
+                    </div>
+                </div>
+
+                <div className="csa-field" style={{ marginBottom: '12px' }}>
+                    <span className="csa-label" style={{ fontSize: '11px', textTransform: 'uppercase', color: 'var(--csa-muted)', marginBottom: '4px', display: 'block', fontWeight: 600 }}>Mật khẩu</span>
+                    <div 
+                        className="csa-input-wrap" 
+                        onClick={() => handleCopy(account.password_plain, "Mật khẩu")}
+                        style={{ display: 'flex', alignItems: 'center', background: 'rgba(0, 0, 0, 0.4)', border: '1px solid var(--csa-border)', borderRadius: '10px', cursor: 'pointer' }}
+                    >
+                        <span className="csa-value" style={{ flex: 1, padding: '10px 12px', fontFamily: 'monospace', fontSize: '14px', color: 'var(--csa-gold)', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', fontWeight: 'bold' }}>
+                            {account.password_plain}
+                        </span>
+                        <i className="fa-regular fa-copy csa-copy-icon" style={{ padding: '0 12px', color: 'var(--csa-green)' }}></i>
+                    </div>
+                </div>
+
+                <div className="csa-meta" style={{ marginTop: '14px', paddingTop: '12px', borderTop: '1px solid rgba(255,215,0,0.3)', display: 'flex', justifyContent: 'space-between', fontSize: '11px', color: 'var(--csa-muted)' }}>
+                    <span>
+                        <span className={`status-dot ${account.status === 'Work' ? 'st-true' : 'st-false'}`} style={{ width: '8px', height: '8px', borderRadius: '50%', display: 'inline-block', marginRight: '6px', background: account.status === 'Work' ? 'var(--csa-green)' : 'var(--csa-red)', boxShadow: account.status === 'Work' ? '0 0 8px var(--csa-green)' : 'none' }}></span>
+                        {account.status === 'Work' ? t.work : 'Bảo trì'}
+                    </span>
+                    <span><i className="fa-solid fa-clock"></i> Cập nhật: {new Date(account.lastUpdate).toLocaleTimeString()}</span>
+                </div>
             </div>
         </div>
-        <div className="bg-black/5 dark:bg-slate-800/50 p-3 rounded-lg flex items-center gap-3">
-            <ClockIcon className="w-5 h-5 text-slate-500 dark:text-slate-400" />
-            <div>
-                <p className="text-xs text-slate-500 dark:text-slate-400">{t.update}</p>
-                <p className="text-sm font-semibold text-slate-700 dark:text-slate-200">{timeAgo}</p>
-            </div>
-        </div>
-      </div>
-    </div>
-  );
+    );
 };
 
 export default React.memo(AccountCard);

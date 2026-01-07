@@ -1,147 +1,48 @@
 import React, { FC } from 'react';
-import { GlowingBorderCard } from './common';
-import {
-    WarningIcon,
-    BanIcon,
-    ArrowRightIcon,
-    UserIcon,
-    AppWindowIcon,
-    ArchiveIcon,
-    UsersIcon
-} from './icons';
-import type { Translation, Language } from '../data/translations';
+import type { Translation } from '../data/translations';
 
-interface LoginGuideProps {
-    t: Translation;
-    language: Language;
-}
-
-const LoginGuide: FC<LoginGuideProps> = ({t, language}) => {
+const LoginGuide: FC<{ t: Translation }> = ({ t }) => {
     return (
-        <div className="space-y-6">
-            <header className="flex flex-col items-center text-center space-y-4">
-                <div className="relative w-20 h-20 rounded-3xl shadow-lg shadow-blue-500/30">
-                    <img src="https://i.ibb.co/Y7d5zS6k/IMG-8541.jpg" alt="Login Guide Icon" className="w-full h-full rounded-3xl object-cover" />
+        <div className="csa-grid-content" style={{ display: 'grid', gap: '20px', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))' }}>
+            <section className="csa-box">
+                <h3>📝 Hướng dẫn nhận Lì Xì</h3>
+                <ol className="csa-list" style={{ margin: 0, paddingLeft: '24px', lineHeight: 1.6, fontSize: '15px', color: 'var(--csa-muted)' }}>
+                    <li style={{marginBottom: '12px'}}>Nhấn vào ô <strong>Email & Mật khẩu</strong> ở trên để sao chép.</li>
+                    <li style={{marginBottom: '12px'}}>Vào <strong>App Store</strong> &gt; Avatar góc phải trên &gt; Kéo xuống cuối &gt; <strong>Đăng xuất</strong>.</li>
+                    <li style={{marginBottom: '12px'}}>Đăng nhập ID vừa lấy (Paste vào).</li>
+                    <li style={{marginBottom: '12px'}}>Nếu hỏi nâng cấp bảo mật: Chọn <strong>"Các lựa chọn khác"</strong> &gt; <strong>"Không nâng cấp"</strong>.</li>
+                    <li style={{marginBottom: '12px'}}>Vào mục <strong>Đã mua (Purchased)</strong> &gt; Tải game về chiến Tết!</li>
+                </ol>
+            </section>
+
+            <aside className="csa-box">
+                <div className="status-box status-ok" style={{ padding: '16px', borderRadius: '12px', marginBottom: '16px', background: 'rgba(0,0,0,0.3)', border: '1px solid rgba(255,255,255,0.1)', borderLeft: '4px solid var(--csa-green)' }}>
+                    <h3 style={{color: 'var(--csa-green)', margin: '0 0 8px'}}>✅ NÊN LÀM</h3>
+                    <ul className="csa-list-sm" style={{margin: 0, paddingLeft: '20px', fontSize: '14px', color: 'var(--csa-muted)'}}>
+                        <li>Đăng xuất ngay sau khi tải.</li>
+                        <li>Chỉ dùng tải game.</li>
+                    </ul>
                 </div>
-                <h2 className="text-2xl font-bold text-slate-800 dark:text-white tracking-tight">{t.loginGuideTitle}</h2>
-                <p className="text-slate-500 dark:text-slate-400">{t.loginGuideSubtitle}</p>
-            </header>
+                <div className="status-box status-no" style={{ padding: '16px', borderRadius: '12px', marginBottom: '16px', background: 'rgba(0,0,0,0.3)', border: '1px solid rgba(255,255,255,0.1)', borderLeft: '4px solid var(--csa-red)' }}>
+                    <h3 style={{color: 'var(--csa-red)', margin: '0 0 8px'}}>⛔ CẤM (BỊ PHẠT)</h3>
+                    <ul className="csa-list-sm" style={{margin: 0, paddingLeft: '20px', fontSize: '14px', color: 'var(--csa-muted)'}}>
+                        <li>Không đăng nhập iCloud.</li>
+                        <li>Không Update iOS.</li>
+                    </ul>
+                </div>
 
-            <div className="warning-box space-y-3">
-                <h3 className="flex items-center gap-2 font-bold text-red-400">
-                    <WarningIcon className="w-5 h-5"/>
-                    {t.importantWarningTitle}
-                </h3>
-                <ul className="list-disc list-inside space-y-2 text-sm text-slate-300 pl-1">
-                    <li><span className="font-semibold">{t.warning1.split(' - ')[0]}</span> - {t.warning1.split(' - ')[1]}</li>
-                    <li>{t.warning2}</li>
-                    <li>{t.warning3}</li>
-                </ul>
-            </div>
-            
-            <div className="ban-box space-y-3">
-                 <h3 className="flex items-center gap-2 font-bold text-orange-400">
-                    <BanIcon className="w-5 h-5"/>
-                    {t.whatNotToDoTitle}
-                </h3>
-                <ul className="list-disc list-inside space-y-2 text-sm text-slate-300 pl-1">
-                    <li>{t.notToDo1}</li>
-                    <li>{t.notToDo2}</li>
-                    <li>{t.notToDo3}</li>
-                </ul>
-            </div>
-
-            <div className="space-y-4">
-                <GlowingBorderCard className="shadow-purple-500/30" contentClassName="p-4 relative">
-                    <div className="absolute -top-3 -left-3 w-8 h-8 bg-gradient-to-br from-blue-500 to-purple-600 rounded-full flex items-center justify-center text-sm font-bold border-4 border-white dark:border-[#161b22] text-white">1</div>
-                    <div className="ml-2">
-                         <h3 className="font-bold text-slate-800 dark:text-white mb-3 ml-4">{t.step1Title}</h3>
-                         <div className="space-y-3">
-                            <div className="flex items-center gap-2 text-sm text-slate-600 dark:text-slate-300">
-                                <span>{t.step1_1}</span>
-                                <img src="https://i.ibb.co/mCGLzdCP/IMG-8818.jpg" alt="App Store" className="w-5 h-5 rounded-md" />
-                                <span className="font-semibold">{t.step1_2}</span>
-                                {language === 'vi' && <span>lên</span>}
-                            </div>
-                            <div className="flex items-center gap-2 text-sm text-slate-600 dark:text-slate-300">
-                                <ArrowRightIcon className="w-4 h-4 text-purple-400"/>
-                                <span>{t.step1_3}</span>
-                                <UserIcon className="w-5 h-5 text-blue-400"/>
-                                <span className="font-semibold">{t.step1_4}</span>
-                            </div>
-
-                            <div className="warning-box p-3 space-y-2">
-                                <h4 className="font-semibold text-red-300 text-sm flex items-center gap-2">
-                                    <ArrowRightIcon className="w-4 h-4"/>
-                                    {t.step1_logout_title}
-                                </h4>
-                                <ul className="list-disc list-inside space-y-1 text-xs text-slate-300 pl-4">
-                                    <li>{t.step1_logout_1}</li>
-                                    <li>{t.step1_logout_2}</li>
-                                </ul>
-                            </div>
-                            <div className="step-box-green space-y-2">
-                                 <h4 className="font-semibold text-green-300 text-sm flex items-center gap-2">
-                                    <ArrowRightIcon className="w-4 h-4"/>
-                                    {t.step1_login_title}
-                                 </h4>
-                                  <ul className="list-disc list-inside space-y-1 text-xs text-slate-300 pl-4">
-                                    <li>{t.step1_login_1}</li>
-                                    <li>{t.step1_login_2}</li>
-                                    <li>{t.step1_login_3}</li>
-                                    <li>{t.step1_login_4}</li>
-                                </ul>
-                            </div>
-                         </div>
+                <div style={{marginTop: 'auto', paddingTop: '15px', borderTop: '1px solid var(--csa-border)'}}>
+                    <h4 style={{color: 'var(--csa-text)', fontSize: '15px', margin: '0 0 12px', textAlign: 'center'}}>🚀 Cộng đồng CSA</h4>
+                    <div className="social-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '10px' }}>
+                        <a href="https://t.me/idpremiumcsa" target="_blank" className="csa-btn-social btn-tele" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px', padding: '12px', borderRadius: '12px', fontWeight: 600, fontSize: '13px', textDecoration: 'none', transition: '0.2s', whiteSpace: 'nowrap', background: 'rgba(34, 158, 217, 0.2)', color: '#4db8ff', border: '1px solid rgba(34, 158, 217, 0.4)' }}>
+                            <i className="fa-brands fa-telegram"></i> Telegram
+                        </a>
+                        <a href="https://www.facebook.com/groups/csabanquyen" target="_blank" className="csa-btn-social btn-fb" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '8px', padding: '12px', borderRadius: '12px', fontWeight: 600, fontSize: '13px', textDecoration: 'none', transition: '0.2s', whiteSpace: 'nowrap', background: 'rgba(24, 119, 242, 0.2)', color: '#5af', border: '1px solid rgba(24, 119, 242, 0.4)' }}>
+                            <i className="fa-brands fa-facebook"></i> Facebook
+                        </a>
                     </div>
-                </GlowingBorderCard>
-
-                <GlowingBorderCard className="shadow-teal-500/30" contentClassName="p-4 relative">
-                     <div className="absolute -top-3 -left-3 w-8 h-8 bg-gradient-to-br from-green-500 to-teal-600 rounded-full flex items-center justify-center text-sm font-bold border-4 border-white dark:border-[#161b22] text-white">2</div>
-                     <div className="ml-2">
-                        <h3 className="font-bold text-slate-800 dark:text-white mb-2 ml-4">{t.step2Title}</h3>
-                        <p className="text-sm text-slate-500 dark:text-slate-400 mb-3 ml-4">{t.step2Subtitle}</p>
-                        <div className="step-box-green space-y-2 text-sm text-slate-300">
-                            <p>1 <ArrowRightIcon className="w-4 h-4 inline-block mx-1 text-green-400"/> {t.step2_1}</p>
-                            <p>2 <ArrowRightIcon className="w-4 h-4 inline-block mx-1 text-green-400"/> {t.step2_2}</p>
-                        </div>
-                     </div>
-                </GlowingBorderCard>
-
-                <GlowingBorderCard className="shadow-amber-500/30" contentClassName="p-4 relative">
-                     <div className="absolute -top-3 -left-3 w-8 h-8 bg-gradient-to-br from-orange-500 to-amber-600 rounded-full flex items-center justify-center text-sm font-bold border-4 border-white dark:border-[#161b22] text-white">3</div>
-                     <div className="ml-2">
-                        <h3 className="font-bold text-slate-800 dark:text-white mb-2 ml-4">{t.step3Title}</h3>
-                        <p className="text-sm text-slate-500 dark:text-slate-400 mb-3 ml-4">{t.step3Subtitle}</p>
-                        <div className="space-y-3">
-                            <div className="flex items-center gap-2 text-sm text-slate-600 dark:text-slate-300">
-                                <AppWindowIcon className="w-5 h-5 text-sky-400"/>
-                                <span className="font-semibold">{t.step3_iphone_high}</span>
-                                <span>{t.step3_iphone_high_action}</span>
-                            </div>
-                             <div className="flex items-center gap-2 text-sm text-slate-600 dark:text-slate-300">
-                                <ArchiveIcon className="w-5 h-5 text-sky-400"/>
-                                <span className="font-semibold">{t.step3_iphone_low}</span>
-                                <span>{t.step3_iphone_low_action}</span>
-                            </div>
-
-                            <div className="warning-box p-3">
-                                 <p className="text-sm text-red-300 flex items-start gap-2">
-                                    <WarningIcon className="w-5 h-5 flex-shrink-0 mt-0.5"/>
-                                    <span>{t.step3_warning}</span>
-                                </p>
-                            </div>
-
-                            <div className="step-box-green p-3">
-                                 <p className="text-sm text-green-300 flex items-start gap-2">
-                                    <UsersIcon className="w-5 h-5 flex-shrink-0 mt-0.5"/>
-                                    <span>{t.step3_tip}</span>
-                                </p>
-                            </div>
-                        </div>
-                     </div>
-                </GlowingBorderCard>
-            </div>
+                </div>
+            </aside>
         </div>
     );
 };
