@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Kho Apple ID Tết 2026 - CSA Group</title>
-    <link rel="icon" type="image/png" href="https://thongtin.yuichycsa.id.vn/image/logo.png" />
+    <title>LOCKET GOLD TẾT 2026 - Luonghiii</title>
+    <link rel="icon" type="image/png" href="https://i.ibb.co/Y7d5zS6k/IMG-8541.jpg" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
@@ -59,7 +59,8 @@
         ::-webkit-scrollbar-track { background: rgba(0, 0, 0, 0.3); }
         ::-webkit-scrollbar-thumb { background: var(--csa-gold); border-radius: 4px; }
 
-        .lantern-container { position: fixed; top: -20px; z-index: 5; pointer-events: none; display: flex; justify-content: center; }
+        /* Updated z-index to 60 to be above everything, added pointer-events: none to container but auto to lantern */
+        .lantern-container { position: fixed; top: -20px; z-index: 60; pointer-events: none; display: flex; justify-content: center; }
         .lantern-left { left: 5%; }
         .lantern-right { right: 5%; }
         .lantern {
@@ -67,13 +68,15 @@
             background: radial-gradient(circle, #ff5e62, #ff0000);
             border-radius: 40px; box-shadow: 0 5px 25px rgba(255, 0, 0, 0.5);
             animation: swing 3s infinite ease-in-out; transform-origin: top center;
+            pointer-events: auto; cursor: pointer;
         }
         .lantern::before { content: ''; position: absolute; top: -30px; left: 50%; transform: translateX(-50%); width: 4px; height: 30px; background: #b71540; }
         .lantern::after { content: ''; position: absolute; bottom: -20px; left: 50%; transform: translateX(-50%); width: 6px; height: 20px; background: #ffd700; box-shadow: 0 5px 10px rgba(255, 215, 0, 0.5); }
         .lantern-text { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 24px; font-weight: bold; color: #ffd700; }
         @keyframes swing { 0%,100%{transform:rotate(-6deg)} 50%{transform:rotate(6deg)} }
 
-        .horse-track { position: fixed; bottom: 0; left: 0; width: 100%; height: 60px; pointer-events: none; z-index: 4; overflow: hidden; }
+        /* Updated z-index to 50 to run over content cards */
+        .horse-track { position: fixed; bottom: 0; left: 0; width: 100%; height: 60px; pointer-events: none; z-index: 50; overflow: hidden; }
         .running-horse { position: absolute; bottom: 10px; color: var(--csa-gold); font-size: 35px; white-space: nowrap; transition: left 10s linear; width: max-content; filter: drop-shadow(0 0 10px rgba(255,215,0,0.8)); will-change: left; }
 
         .gold-shimmer {

@@ -26,6 +26,18 @@ const AccountCard: FC<AccountCardProps> = ({ account, t, onCopySuccess }) => {
         });
     };
 
+    const maskEmail = (email: string) => {
+        const parts = email.split('@');
+        if (parts.length < 2) return email;
+        const name = parts[0];
+        // Show first 5 chars, append ***.com as requested style
+        // e.g. luonghiii@icloud.com -> luong***.com
+        const visibleName = name.slice(0, 5);
+        return `${visibleName}***.com`;
+    };
+
+    const maskedPassword = "*****";
+
     return (
         <div className="csa-acc-card" style={{
             background: 'rgba(50, 0, 0, 0.6)',
@@ -63,7 +75,7 @@ const AccountCard: FC<AccountCardProps> = ({ account, t, onCopySuccess }) => {
                         style={{ display: 'flex', alignItems: 'center', background: 'rgba(0, 0, 0, 0.4)', border: '1px solid var(--csa-border)', borderRadius: '10px', cursor: 'pointer' }}
                     >
                         <span className="csa-value" style={{ flex: 1, padding: '10px 12px', fontFamily: 'monospace', fontSize: '14px', color: 'var(--csa-gold)', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', fontWeight: 'bold' }}>
-                            {account.email}
+                            {maskEmail(account.email)}
                         </span>
                         <i className="fa-regular fa-copy csa-copy-icon" style={{ padding: '0 12px', color: 'var(--csa-green)' }}></i>
                     </div>
@@ -77,7 +89,7 @@ const AccountCard: FC<AccountCardProps> = ({ account, t, onCopySuccess }) => {
                         style={{ display: 'flex', alignItems: 'center', background: 'rgba(0, 0, 0, 0.4)', border: '1px solid var(--csa-border)', borderRadius: '10px', cursor: 'pointer' }}
                     >
                         <span className="csa-value" style={{ flex: 1, padding: '10px 12px', fontFamily: 'monospace', fontSize: '14px', color: 'var(--csa-gold)', whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis', fontWeight: 'bold' }}>
-                            {account.password_plain}
+                            {maskedPassword}
                         </span>
                         <i className="fa-regular fa-copy csa-copy-icon" style={{ padding: '0 12px', color: 'var(--csa-green)' }}></i>
                     </div>

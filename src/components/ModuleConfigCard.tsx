@@ -1,4 +1,3 @@
-
 import React, { FC, useEffect, useState, useMemo } from 'react';
 import { GlowingBorderCard } from './common';
 import type { Translation } from '../data/translations';
@@ -87,50 +86,57 @@ const ModuleConfigCard: FC<ModuleConfigCardProps> = ({ t }) => {
     const handleAddConfig = (url: string) => {
         window.location.href = url;
     };
+
+    // Styling
+    const cardTitleStyle = { color: 'var(--csa-gold)', fontSize: '20px', fontWeight: 'bold', marginBottom: '16px', textTransform: 'uppercase' } as React.CSSProperties;
+    const subTitleStyle = { color: 'var(--csa-gold)', fontSize: '16px', fontWeight: 600, marginBottom: '12px' } as React.CSSProperties;
+    const noteStyle = { background: 'rgba(34, 158, 217, 0.15)', border: '1px solid rgba(34, 158, 217, 0.4)', borderRadius: '8px', padding: '12px', marginBottom: '16px', display: 'flex', gap: '8px', fontSize: '14px', color: '#fff' } as React.CSSProperties;
+    const itemRowStyle = { background: 'rgba(0, 0, 0, 0.3)', border: '1px solid rgba(255, 255, 255, 0.1)', borderRadius: '12px', padding: '12px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '16px', marginBottom: '10px' } as React.CSSProperties;
+    const buttonStyle = { background: 'rgba(255, 215, 0, 0.1)', border: '1px solid var(--csa-gold)', color: 'var(--csa-gold)', padding: '6px 14px', borderRadius: '8px', fontWeight: 600, cursor: 'pointer', fontSize: '13px' } as React.CSSProperties;
     
     return (
         <GlowingBorderCard
             className="shadow-purple-500/30"
-            contentClassName="p-6"
+            contentClassName=""
         >
             <div className="space-y-6">
-                <h2 className="text-xl font-bold text-slate-800 dark:text-slate-100">{t.moduleConfigTitle}</h2>
+                <h2 style={cardTitleStyle}>{t.moduleConfigTitle}</h2>
                 
-                <div className="bg-sky-500/10 dark:bg-sky-900/50 border border-sky-500/50 p-3 rounded-lg flex items-start gap-3 text-sm text-sky-800 dark:text-sky-200">
-                    <InfoIcon className="w-5 h-5 flex-shrink-0 mt-0.5 text-sky-500 dark:text-sky-400" />
+                <div style={noteStyle}>
+                    <InfoIcon className="w-5 h-5 flex-shrink-0" style={{color: '#4db8ff'}} />
                     <div>
-                        <p className="font-semibold mb-1">{t.moduleNoteTitle}</p>
-                        <p>{t.moduleNoteContent}</p>
+                        <p style={{fontWeight: 700, marginBottom: '4px', color: '#4db8ff'}}>{t.moduleNoteTitle}</p>
+                        <p style={{lineHeight: 1.4, opacity: 0.9}}>{t.moduleNoteContent}</p>
                     </div>
                 </div>
 
                 <div>
-                    <h3 className="text-lg font-semibold text-slate-700 dark:text-slate-200 mb-3">{t.configurationTitle}</h3>
+                    <h3 style={subTitleStyle}>{t.configurationTitle}</h3>
                     <div className="space-y-3">
-                        <div className="bg-black/5 dark:bg-slate-800/50 p-3 rounded-lg flex items-center justify-between gap-4 hover:bg-black/10 dark:hover:bg-white/5 transition-colors">
+                        <div style={itemRowStyle}>
                             <div className="flex items-center gap-3">
-                                <div className="w-10 h-10 rounded-lg bg-slate-200 dark:bg-slate-700 flex items-center justify-center">
-                                    <ShieldIcon className="w-6 h-6 text-green-500 dark:text-green-400" />
+                                <div className="w-10 h-10 rounded-lg bg-gray-700 flex items-center justify-center">
+                                    <ShieldIcon className="w-6 h-6 text-green-400" />
                                 </div>
-                                <p className="font-semibold text-slate-700 dark:text-slate-200">{t.adBlockConfig}</p>
+                                <p style={{fontWeight: 600, color: '#fff'}}>{t.adBlockConfig}</p>
                             </div>
                             <button
                             onClick={() => handleAddConfig("shadowrocket://config/add/https://raw.githubusercontent.com/Luonghiii/Config/refs/heads/main/Module/ads.sgmodule")}
-                            className="flex-shrink-0 px-4 py-2 bg-purple-500/20 backdrop-blur-md border border-purple-400/50 hover:bg-purple-500/30 rounded-lg text-white font-semibold transition-colors text-sm">
+                            style={buttonStyle}>
                                 {t.addConfig}
                             </button>
                         </div>
 
-                        <div className="bg-black/5 dark:bg-slate-800/50 p-3 rounded-lg flex items-center justify-between gap-4 hover:bg-black/10 dark:hover:bg-white/5 transition-colors">
+                        <div style={itemRowStyle}>
                             <div className="flex items-center gap-3">
-                                <div className="w-10 h-10 rounded-lg bg-slate-200 dark:bg-slate-700 flex items-center justify-center">
-                                    <ShieldIcon className="w-6 h-6 text-amber-500 dark:text-amber-400" />
+                                <div className="w-10 h-10 rounded-lg bg-gray-700 flex items-center justify-center">
+                                    <ShieldIcon className="w-6 h-6 text-amber-400" />
                                 </div>
-                                <p className="font-semibold text-slate-700 dark:text-slate-200">{t.locketGoldConfig}</p>
+                                <p style={{fontWeight: 600, color: '#fff'}}>{t.locketGoldConfig}</p>
                             </div>
                             <button
                             onClick={() => handleAddConfig("https://luonghiii.github.io/File/Plist/Locketgold.mobileconfig")}
-                            className="flex-shrink-0 px-4 py-2 bg-purple-500/20 backdrop-blur-md border border-purple-400/50 hover:bg-purple-500/30 rounded-lg text-white font-semibold transition-colors text-sm">
+                            style={buttonStyle}>
                                 {t.install}
                             </button>
                         </div>
@@ -138,63 +144,55 @@ const ModuleConfigCard: FC<ModuleConfigCardProps> = ({ t }) => {
                 </div>
 
                 <div>
-                    <h3 className="flex items-center justify-between text-lg font-semibold text-slate-700 dark:text-slate-200 mb-3">
-                        <span>{t.moduleListTitle}</span>
-                        <span className="flex items-center gap-1.5 text-xs font-bold text-green-600 dark:text-green-300 bg-green-500/10 px-3 py-1 rounded-full">
+                    <h3 className="flex items-center justify-between mb-3">
+                        <span style={subTitleStyle}>{t.moduleListTitle}</span>
+                        <span className="flex items-center gap-1.5 text-xs font-bold text-green-400 bg-green-900/30 border border-green-500/30 px-3 py-1 rounded-full">
                             <CheckIcon className="w-3 h-3" />
                             <span>{`${activeModulesCount} ${t.modulesActive}`}</span>
                         </span>
                     </h3>
 
                     <div className="relative mb-3">
-                        <SearchIcon className="absolute left-3.5 top-1/2 -translate-y-1/2 w-5 h-5 text-slate-400 dark:text-slate-500 pointer-events-none" />
+                        <SearchIcon className="absolute left-3.5 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400 pointer-events-none" />
                         <input
                             type="text"
                             placeholder={t.moduleSearchPlaceholder}
                             value={searchQuery}
                             onChange={e => setSearchQuery(e.target.value)}
-                            className="w-full bg-slate-200 dark:bg-slate-800/50 border border-slate-300 dark:border-slate-700 rounded-lg py-2.5 pl-11 pr-4 text-slate-800 dark:text-white placeholder-slate-500 dark:placeholder-slate-500 focus:outline-none focus:ring-2 focus:ring-purple-500 transition-all"
+                            className="w-full bg-black/40 border border-gray-600 rounded-lg py-2.5 pl-11 pr-4 text-white placeholder-gray-400 focus:outline-none focus:border-gold transition-all"
+                            style={{borderColor: 'var(--csa-border)'}}
                         />
                     </div>
                     
                     {filteredModules.length > 0 ? (
                         <div className="space-y-2 max-h-80 overflow-y-auto pr-2 custom-scrollbar">
                             {filteredModules.map(module => (
-                                <div key={module.fileName} className="bg-black/5 dark:bg-slate-800/50 p-2 rounded-lg flex items-center justify-between gap-4 hover:bg-black/10 dark:hover:bg-white/5 transition-colors">
+                                <div key={module.fileName} style={itemRowStyle}>
                                     <div className="flex items-center gap-3 min-w-0">
                                         {module.iconUrl || module.fetchedIconUrl ? (
                                             <img src={module.iconUrl || module.fetchedIconUrl} alt={module.name} className="w-10 h-10 rounded-lg object-cover flex-shrink-0" loading="lazy" />
                                         ) : (
-                                            <div className="w-10 h-10 rounded-lg bg-slate-200 dark:bg-slate-700 flex items-center justify-center flex-shrink-0">
-                                                <SettingsIcon className="w-6 h-6 text-slate-500 dark:text-slate-400" />
+                                            <div className="w-10 h-10 rounded-lg bg-gray-700 flex items-center justify-center flex-shrink-0">
+                                                <SettingsIcon className="w-6 h-6 text-gray-400" />
                                             </div>
                                         )}
-                                        <p className="font-semibold text-slate-700 dark:text-slate-200 text-sm truncate">{module.name}</p>
+                                        <p style={{fontWeight: 600, color: '#fff', fontSize: '14px'}} className="truncate">{module.name}</p>
                                     </div>
                                     <div className="flex items-center gap-3 flex-shrink-0">
                                         <div
                                             className={`relative w-2.5 h-2.5 rounded-full ${
                                                 module.working
-                                                    ? 'bg-green-500/30'
-                                                    : 'bg-amber-500/30'
+                                                    ? 'bg-green-500'
+                                                    : 'bg-amber-500'
                                             }`}
                                             title={module.working ? t.work : t.notWorking}
+                                            style={{boxShadow: module.working ? '0 0 8px #2ecc71' : '0 0 8px #f1c40f'}}
                                         >
-                                            <div className={`absolute inset-0 rounded-full ${
-                                                module.working
-                                                    ? 'shadow-[0_0_6px_rgba(34,197,94,0.7)]'
-                                                    : 'shadow-[0_0_6px_rgba(245,158,11,0.7)]'
-                                            }`}></div>
-                                            <div className={`absolute inset-0 rounded-full ring-1 ${
-                                                module.working
-                                                    ? 'ring-green-300/50'
-                                                    : 'ring-amber-300/50'
-                                            }`}></div>
                                         </div>
                                         <button
                                            onClick={() => handleAddModule(module.fileName)}
                                            disabled={!module.working}
-                                           className="flex-shrink-0 px-4 py-2 bg-purple-500/20 backdrop-blur-md border border-purple-400/50 hover:bg-purple-500/30 rounded-lg text-white font-semibold transition-colors text-sm disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:bg-purple-500/20">
+                                           style={{...buttonStyle, opacity: module.working ? 1 : 0.5, cursor: module.working ? 'pointer' : 'not-allowed'}}>
                                             {t.addModule}
                                         </button>
                                     </div>
@@ -202,7 +200,7 @@ const ModuleConfigCard: FC<ModuleConfigCardProps> = ({ t }) => {
                             ))}
                         </div>
                     ) : (
-                        <div className="text-center text-slate-500 dark:text-slate-400 py-8">
+                        <div className="text-center text-gray-400 py-8">
                             {t.moduleNoResults}
                         </div>
                     )}

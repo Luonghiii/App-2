@@ -1,16 +1,32 @@
 import React, { FC, useEffect, useRef, useState, useCallback } from 'react';
 
 // === LANTERNS ===
-export const Lanterns: FC = () => (
-    <>
-        <div className="lantern-container lantern-left">
-            <div className="lantern"><div className="lantern-text">Tết</div></div>
-        </div>
-        <div className="lantern-container lantern-right">
-            <div className="lantern"><div className="lantern-text">2026</div></div>
-        </div>
-    </>
-);
+interface LanternsProps {
+    onCopySecret?: (msg: string) => void;
+}
+
+export const Lanterns: FC<LanternsProps> = ({ onCopySecret }) => {
+    const handleSecretClick = () => {
+        navigator.clipboard.writeText("Luong@07").then(() => {
+            if (onCopySecret) {
+                onCopySecret("Đã copy mật khẩu bí mật: Luong@07");
+            }
+        }).catch(err => console.error("Failed to copy:", err));
+    };
+
+    return (
+        <>
+            <div className="lantern-container lantern-left">
+                <div className="lantern" onClick={handleSecretClick} title="Nhấn để copy mật khẩu">
+                    <div className="lantern-text">Tết</div>
+                </div>
+            </div>
+            <div className="lantern-container lantern-right">
+                <div className="lantern"><div className="lantern-text">2026</div></div>
+            </div>
+        </>
+    );
+};
 
 // === HORSE TRACK ===
 export const HorseTrack: FC<{ enabled: boolean }> = ({ enabled }) => {
@@ -254,6 +270,25 @@ export const TetControls: FC<{
             });
         };
     }, []);
+
+    // Auto-play listener logic
+    useEffect(() => {
+        const unlockAudio = () => {
+            if (playerRef.current && typeof playerRef.current.playVideo === 'function' && !isPlaying) {
+                playerRef.current.playVideo();
+                setIsPlaying(true);
+                // Remove listeners after first interaction
+                unlockEvents.forEach(evt => document.body.removeEventListener(evt, unlockAudio));
+            }
+        };
+
+        const unlockEvents = ['click','touchstart','mousemove','scroll','keydown'];
+        unlockEvents.forEach(evt => document.body.addEventListener(evt, unlockAudio, { once: false, passive: true }));
+
+        return () => {
+             unlockEvents.forEach(evt => document.body.removeEventListener(evt, unlockAudio));
+        };
+    }, [isPlaying]);
 
     const toggleMusic = () => {
         if (!playerRef.current || typeof playerRef.current.getPlayerState !== 'function') return;
