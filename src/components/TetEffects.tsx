@@ -236,22 +236,18 @@ export const TetControls: FC<{
     const youtubeID = "LjeDW43A3xw"; // Provided ID
 
     useEffect(() => {
-        // Load YouTube API if not present
-        if (!(window as any).YT) {
-            const tag = document.createElement('script');
-            tag.src = "https://www.youtube.com/iframe_api";
-            const firstScriptTag = document.getElementsByTagName('script')[0];
-            firstScriptTag.parentNode?.insertBefore(tag, firstScriptTag);
-        }
+        const initPlayer = () => {
+            if (playerRef.current) return;
+            if (!(window as any).YT || !(window as any).YT.Player) return;
 
-        (window as any).onYouTubeIframeAPIReady = () => {
             playerRef.current = new (window as any).YT.Player('youtube-audio', {
                 height: '0', width: '0',
                 videoId: youtubeID,
                 playerVars: {
                     'autoplay': 1, 'loop': 1, 'playlist': youtubeID, 
                     'controls': 0, 'showinfo': 0, 'modestbranding': 1, 'rel': 0,
-                    'origin': window.location.origin
+                    'origin': window.location.origin,
+                    'playsinline': 1
                 },
                 events: {
                     'onReady': (event: any) => {
@@ -269,6 +265,26 @@ export const TetControls: FC<{
                 }
             });
         };
+
+        if ((window as any).YT && (window as any).YT.Player) {
+            initPlayer();
+        } else {
+             // Create global callback
+             const prevCallback = (window as any).onYouTubeIframeAPIReady;
+             (window as any).onYouTubeIframeAPIReady = () => {
+                 if (prevCallback) prevCallback();
+                 initPlayer();
+             };
+
+             // Load script
+             if (!document.getElementById('yt-api-script')) {
+                 const tag = document.createElement('script');
+                 tag.src = "https://www.youtube.com/iframe_api";
+                 tag.id = 'yt-api-script';
+                 const firstScriptTag = document.getElementsByTagName('script')[0];
+                 firstScriptTag.parentNode?.insertBefore(tag, firstScriptTag);
+             }
+        }
     }, []);
 
     // Auto-play listener logic

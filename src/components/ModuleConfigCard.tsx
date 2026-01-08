@@ -1,13 +1,7 @@
-import React, { FC, useEffect, useState, useMemo } from 'react';
+import React, { FC, useState, useMemo } from 'react';
 import { GlowingBorderCard } from './common';
 import type { Translation } from '../data/translations';
 import { InfoIcon, SettingsIcon, ShieldIcon, SearchIcon, CheckIcon } from './icons';
-
-// Interfaces for iTunes API and module data
-interface ITunesResult {
-    artworkUrl100: string;
-    trackId: number;
-}
 
 interface ModuleInfo {
     name: string;
@@ -17,56 +11,19 @@ interface ModuleInfo {
     working: boolean;
 }
 
-interface ModuleData extends ModuleInfo {
-    fetchedIconUrl?: string;
-}
-
 // The list of modules with their corresponding App Store IDs, sorted alphabetically
 const initialModules: ModuleInfo[] = [
     { name: 'Locket Gold', fileName: 'LocketGold.sgmodule', appId: '1600525061', iconUrl: 'https://i.ibb.co/q322N0H9/IMG-8793.jpg', working: true },
 ];
-
 
 interface ModuleConfigCardProps {
     t: Translation;
 }
 
 const ModuleConfigCard: FC<ModuleConfigCardProps> = ({ t }) => {
-    const [modules, setModules] = useState<ModuleData[]>(initialModules.map(m => ({ ...m })));
+    // Removed dynamic API fetching state to prevent calling iTunes API
+    const [modules] = useState<ModuleInfo[]>(initialModules);
     const [searchQuery, setSearchQuery] = useState('');
-
-    useEffect(() => {
-        const fetchModuleIcons = async () => {
-            const modulesWithAppId = initialModules.filter(m => m.appId);
-            if (modulesWithAppId.length === 0) return;
-
-            try {
-                const appIds = modulesWithAppId.map(m => m.appId).join(',');
-                const url = `https://itunes.apple.com/lookup?id=${appIds}&country=us`;
-                const response = await fetch(url);
-                const data = await response.json();
-                
-                const results: ITunesResult[] = data.results;
-                
-                setModules(currentModules => 
-                    currentModules.map(module => {
-                        const apiData = results.find(r => r.trackId.toString() === module.appId);
-                        if (apiData) {
-                            return {
-                                ...module,
-                                fetchedIconUrl: apiData.artworkUrl100,
-                            };
-                        }
-                        return module;
-                    })
-                );
-            } catch (error) {
-                console.error("Failed to fetch module icons:", error);
-            }
-        };
-
-        fetchModuleIcons();
-    }, []);
 
     const filteredModules = useMemo(() => {
         return modules.filter(module =>
@@ -169,8 +126,8 @@ const ModuleConfigCard: FC<ModuleConfigCardProps> = ({ t }) => {
                             {filteredModules.map(module => (
                                 <div key={module.fileName} style={itemRowStyle}>
                                     <div className="flex items-center gap-3 min-w-0">
-                                        {module.iconUrl || module.fetchedIconUrl ? (
-                                            <img src={module.iconUrl || module.fetchedIconUrl} alt={module.name} className="w-10 h-10 rounded-lg object-cover flex-shrink-0" loading="lazy" />
+                                        {module.iconUrl ? (
+                                            <img src={module.iconUrl} alt={module.name} className="w-10 h-10 rounded-lg object-cover flex-shrink-0" loading="lazy" />
                                         ) : (
                                             <div className="w-10 h-10 rounded-lg bg-gray-700 flex items-center justify-center flex-shrink-0">
                                                 <SettingsIcon className="w-6 h-6 text-gray-400" />
