@@ -232,6 +232,9 @@ export const TetControls: FC<{
     effectsEnabled: boolean;
 }> = ({ onToggleEffects, effectsEnabled }) => {
     const [isPlaying, setIsPlaying] = useState(false);
+    // Track if the user has explicitly clicked the 'Stop' button.
+    // If true, we disable any auto-play logic triggered by interaction.
+    const [isStoppedManually, setIsStoppedManually] = useState(false);
     const playerRef = useRef<any>(null);
     const youtubeID = "LjeDW43A3xw"; // Provided ID
 
@@ -252,8 +255,8 @@ export const TetControls: FC<{
                 events: {
                     'onReady': (event: any) => {
                         event.target.setVolume(50);
+                        // We try to play, but browser might block it
                         event.target.playVideo();
-                        setIsPlaying(true);
                     },
                     'onStateChange': (event: any) => {
                         if (event.data === (window as any).YT.PlayerState.PLAYING) {
@@ -290,29 +293,35 @@ export const TetControls: FC<{
     // Auto-play listener logic
     useEffect(() => {
         const unlockAudio = () => {
+            // "Lệnh tuyệt đối": If user stopped manually, do nothing even on interaction.
+            if (isStoppedManually) return;
+
             if (playerRef.current && typeof playerRef.current.playVideo === 'function' && !isPlaying) {
                 playerRef.current.playVideo();
-                setIsPlaying(true);
-                // Remove listeners after first interaction
-                unlockEvents.forEach(evt => document.body.removeEventListener(evt, unlockAudio));
+                // If it successfully starts, it will trigger onStateChange -> setIsPlaying(true)
+                // We keep listeners until it actually starts playing or user stops it manually.
             }
         };
 
         const unlockEvents = ['click','touchstart','mousemove','scroll','keydown'];
-        unlockEvents.forEach(evt => document.body.addEventListener(evt, unlockAudio, { once: false, passive: true }));
+        if (!isPlaying && !isStoppedManually) {
+            unlockEvents.forEach(evt => document.body.addEventListener(evt, unlockAudio, { passive: true }));
+        }
 
         return () => {
              unlockEvents.forEach(evt => document.body.removeEventListener(evt, unlockAudio));
         };
-    }, [isPlaying]);
+    }, [isPlaying, isStoppedManually]);
 
     const toggleMusic = () => {
         if (!playerRef.current || typeof playerRef.current.getPlayerState !== 'function') return;
         
         if (isPlaying) {
             playerRef.current.pauseVideo();
+            setIsStoppedManually(true); // Mark as stopped manually
         } else {
             playerRef.current.playVideo();
+            setIsStoppedManually(false); // Reset manual stop if user explicitly wants to play
         }
     };
 
