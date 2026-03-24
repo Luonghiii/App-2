@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>LOCKET GOLD TẾT 2026 - Luonghiii</title>
+    <title>LOCKET GOLD - Luonghiii</title>
     <link rel="icon" type="image/png" href="https://i.ibb.co/Y7d5zS6k/IMG-8541.jpg" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
     <script src="https://cdn.tailwindcss.com"></script>
@@ -22,90 +22,68 @@
       }
     </script>
     <style>
-        /* ==== GLOBAL RESET & THEME TET 2026 ==== */
-        :root {
-            --csa-bg-color: #800000;
-            --csa-panel: rgba(100, 0, 0, 0.6); 
-            --csa-border: rgba(255, 215, 0, 0.5); 
-            --csa-text: #ffffff;
-            --csa-muted: #ffeaa7; 
-            --csa-red: #d63031;     
-            --csa-green: #00b894;   
-            --csa-gold: #FFD700;    
-            --csa-radius: 16px;
-            --csa-font: system-ui, -apple-system, sans-serif;
-        }
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,600;1,600&display=swap');
 
-        /* Hiển thị nền đỏ ngay từ đầu */
-        html, body {
-            background-color: var(--csa-bg-color) !important;
+        :root {
+            --bg-base: #18181B;
+            --glass-bg: rgba(255, 255, 255, 0.04);
+            --glass-border: rgba(212, 175, 55, 0.2);
+            --gold-accent: #D4AF37;
+            --gold-gradient: linear-gradient(135deg, #F6D365 0%, #FDA085 100%);
+            --text-main: #F9FAFB;
+            --text-muted: #9CA3AF;
+            --danger: #EF4444;
+            --success: #10B981;
         }
 
         body {
             margin: 0; padding: 0;
-            font-family: var(--csa-font);
-            color: var(--csa-text);
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-base);
+            color: var(--text-main);
             min-height: 100vh;
             display: flex; flex-direction: column; align-items: center;
-            overflow-x: hidden;
             background-image: 
-                radial-gradient(circle at 50% 0%, #d10000 0%, transparent 60%),
-                repeating-linear-gradient(45deg, rgba(255, 215, 0, 0.05) 0px, rgba(255, 215, 0, 0.05) 1px, transparent 1px, transparent 10px),
-                repeating-linear-gradient(-45deg, rgba(255, 215, 0, 0.05) 0px, rgba(255, 215, 0, 0.05) 1px, transparent 1px, transparent 10px);
+                radial-gradient(circle at 15% 50%, rgba(212, 175, 55, 0.1), transparent 25%),
+                radial-gradient(circle at 85% 30%, rgba(212, 175, 55, 0.08), transparent 25%);
             background-attachment: fixed;
         }
 
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: rgba(0, 0, 0, 0.3); }
-        ::-webkit-scrollbar-thumb { background: var(--csa-gold); border-radius: 4px; }
-
-        /* Updated z-index to 60 to be above everything, added pointer-events: none to container but auto to lantern */
-        .lantern-container { position: fixed; top: -20px; z-index: 60; pointer-events: none; display: flex; justify-content: center; }
-        .lantern-left { left: 5%; }
-        .lantern-right { right: 5%; }
-        .lantern {
-            position: relative; width: 80px; height: 100px;
-            background: radial-gradient(circle, #ff5e62, #ff0000);
-            border-radius: 40px; box-shadow: 0 5px 25px rgba(255, 0, 0, 0.5);
-            animation: swing 3s infinite ease-in-out; transform-origin: top center;
-            pointer-events: auto; cursor: pointer;
+        .app-box { 
+            background: var(--glass-bg); 
+            border: 1px solid var(--glass-border); 
+            border-radius: 16px; 
+            padding: 24px; 
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
         }
-        .lantern::before { content: ''; position: absolute; top: -30px; left: 50%; transform: translateX(-50%); width: 4px; height: 30px; background: #b71540; }
-        .lantern::after { content: ''; position: absolute; bottom: -20px; left: 50%; transform: translateX(-50%); width: 6px; height: 20px; background: #ffd700; box-shadow: 0 5px 10px rgba(255, 215, 0, 0.5); }
-        .lantern-text { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 24px; font-weight: bold; color: #ffd700; }
-        @keyframes swing { 0%,100%{transform:rotate(-6deg)} 50%{transform:rotate(6deg)} }
 
-        /* Updated z-index to 50 to run over content cards */
-        .horse-track { position: fixed; bottom: 0; left: 0; width: 100%; height: 60px; pointer-events: none; z-index: 50; overflow: hidden; }
-        .running-horse { position: absolute; bottom: 10px; color: var(--csa-gold); font-size: 35px; white-space: nowrap; transition: left 10s linear; width: max-content; filter: drop-shadow(0 0 10px rgba(255,215,0,0.8)); will-change: left; }
-
-        .gold-shimmer {
-            background: linear-gradient(to right, #bf953f, #fcf6ba, #b38728, #fbf5b7, #aa771c);
-            -webkit-background-clip: text; background-clip: text; color: transparent;
-            background-size: 200%; animation: shine 3s infinite linear;
+        .gold-text {
+            background: var(--gold-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
-        @keyframes shine { to { background-position: 200% center; } }
 
-        #fireworksCanvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 1; }
-        .falling-container { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 2; overflow: hidden; }
-        .falling-item { position: absolute; top: -50px; animation: fall linear forwards; font-size: 20px; }
-        @keyframes fall { to { transform: translateY(110vh) rotate(360deg); } }
-
-        .csa-box { background: var(--csa-panel); border: 1px solid var(--csa-border); border-radius: var(--csa-radius); padding: 24px; display: flex; flex-direction: column; backdrop-filter: blur(10px); }
-        .csa-toast {
+        .serif-title {
+            font-family: 'Playfair Display', serif;
+        }
+        
+        .app-toast {
             position: fixed; top: 24px; right: 24px; z-index: 10000;
-            background: rgba(183, 21, 64, 0.95); border: 2px solid var(--csa-gold);
-            border-radius: 12px; padding: 16px 20px; display: flex; align-items: center; gap: 12px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.5); transform: translateX(120%);
-            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); backdrop-filter: blur(10px);
+            background: var(--gold-gradient); color: #000; border-radius: 12px; padding: 16px 20px; 
+            display: flex; align-items: center; gap: 12px; font-weight: 600;
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3); transform: translateX(120%);
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
-        .csa-toast.show { transform: translateX(0); }
+        .app-toast.show { transform: translateX(0); }
 
-        .csa-controls { position: fixed; bottom: 20px; right: 20px; z-index: 9000; display: flex; flex-direction: column; gap: 10px; }
-        .csa-ctrl-btn { width: 50px; height: 50px; background: rgba(180, 0, 0, 0.8); border-radius: 50%; display: grid; place-items: center; cursor: pointer; border: 2px solid var(--csa-gold); transition: 0.2s; color: var(--csa-gold); box-shadow: 0 0 15px rgba(255, 215, 0, 0.4); font-size: 20px; }
-        .csa-ctrl-btn:hover { background: rgba(255, 215, 0, 0.2); transform: scale(1.1); }
-        .csa-ctrl-btn.playing { border-color: var(--csa-green); color: var(--csa-green); animation: spin-slow 8s linear infinite; }
-        @keyframes spin-slow { 100% { transform: rotate(360deg); } }
+        @keyframes pulse-gold {
+            0% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0.4); }
+            70% { box-shadow: 0 0 0 10px rgba(212, 175, 55, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(212, 175, 55, 0); }
+        }
     </style>
 <script type="importmap">
 {

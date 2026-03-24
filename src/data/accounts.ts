@@ -4,7 +4,7 @@ export const initialAccounts: Account[] = [
     {
         id: 1,
         email: 'luonghiii@icloud.com',
-        password_plain: 'Luong@07',
+        password_plain: 'Luong@077',
         nation: 'Việt Nam',
         flag: '🇻🇳',
         lastUpdate: new Date(),

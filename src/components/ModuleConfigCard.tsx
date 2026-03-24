@@ -45,19 +45,15 @@ const ModuleConfigCard: FC<ModuleConfigCardProps> = ({ t }) => {
     };
 
     // Styling
-    const cardTitleStyle = { color: 'var(--csa-gold)', fontSize: '20px', fontWeight: 'bold', marginBottom: '16px', textTransform: 'uppercase' } as React.CSSProperties;
-    const subTitleStyle = { color: 'var(--csa-gold)', fontSize: '16px', fontWeight: 600, marginBottom: '12px' } as React.CSSProperties;
-    const noteStyle = { background: 'rgba(34, 158, 217, 0.15)', border: '1px solid rgba(34, 158, 217, 0.4)', borderRadius: '8px', padding: '12px', marginBottom: '16px', display: 'flex', gap: '8px', fontSize: '14px', color: '#fff' } as React.CSSProperties;
-    const itemRowStyle = { background: 'rgba(0, 0, 0, 0.3)', border: '1px solid rgba(255, 255, 255, 0.1)', borderRadius: '12px', padding: '12px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '16px', marginBottom: '10px' } as React.CSSProperties;
-    const buttonStyle = { background: 'rgba(255, 215, 0, 0.1)', border: '1px solid var(--csa-gold)', color: 'var(--csa-gold)', padding: '6px 14px', borderRadius: '8px', fontWeight: 600, cursor: 'pointer', fontSize: '13px' } as React.CSSProperties;
+    const cardTitleStyle = { color: 'var(--gold-accent)', fontSize: '20px', fontWeight: 'bold', marginBottom: '16px', textTransform: 'uppercase', letterSpacing: '1px' } as React.CSSProperties;
+    const subTitleStyle = { color: 'var(--text-main)', fontSize: '15px', fontWeight: 600, marginBottom: '12px', letterSpacing: '0.5px' } as React.CSSProperties;
+    const noteStyle = { background: 'rgba(59, 130, 246, 0.1)', border: '1px solid rgba(59, 130, 246, 0.2)', borderRadius: '8px', padding: '12px', marginBottom: '16px', display: 'flex', gap: '8px', fontSize: '13px', color: 'var(--text-main)' } as React.CSSProperties;
+    const itemRowStyle = { background: 'rgba(0, 0, 0, 0.3)', border: '1px solid rgba(255, 255, 255, 0.08)', borderRadius: '12px', padding: '12px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '16px', marginBottom: '10px' } as React.CSSProperties;
+    const buttonStyle = { background: 'rgba(212, 175, 55, 0.1)', border: '1px solid var(--gold-accent)', color: 'var(--gold-accent)', padding: '6px 14px', borderRadius: '8px', fontWeight: 600, cursor: 'pointer', fontSize: '12px', textTransform: 'uppercase' } as React.CSSProperties;
     
     return (
-        <GlowingBorderCard
-            className="shadow-purple-500/30"
-            contentClassName=""
-        >
-            <div className="space-y-6">
-                <h2 style={cardTitleStyle}>{t.moduleConfigTitle}</h2>
+        <div className="space-y-6">
+            <h2 className="serif-title gold-text" style={cardTitleStyle}>{t.moduleConfigTitle}</h2>
                 
                 <div style={noteStyle}>
                     <InfoIcon className="w-5 h-5 flex-shrink-0" style={{color: '#4db8ff'}} />
@@ -163,7 +159,6 @@ const ModuleConfigCard: FC<ModuleConfigCardProps> = ({ t }) => {
                     )}
                 </div>
             </div>
-        </GlowingBorderCard>
     );
 };
 

@@ -1,25 +1,24 @@
 import React, { FC } from 'react';
 
 const Header: FC = () => (
-    <header className="csa-header" style={{
-        display: 'flex', alignItems: 'center', gap: '16px',
-        marginBottom: '24px', paddingBottom: '20px',
-        borderBottom: '2px solid var(--csa-border)',
-        position: 'relative', marginTop: '20px'
+    <header className="app-header" style={{
+        display: 'flex', alignItems: 'center', gap: '20px',
+        marginBottom: '40px', paddingBottom: '20px',
+        borderBottom: '1px solid var(--glass-border)',
+        position: 'relative', marginTop: '30px'
     }}>
-        <div className="csa-logo" style={{
-            width: '64px', height: '64px',
-            background: 'linear-gradient(135deg, #b71540, #000)',
+        <div className="app-logo" style={{
+            width: '70px', height: '70px',
+            background: 'var(--gold-gradient)',
             borderRadius: '50%', display: 'grid', placeItems: 'center',
-            fontSize: '32px', boxShadow: '0 0 25px rgba(255, 215, 0, 0.7)',
-            border: '2px solid var(--csa-gold)', position: 'relative', overflow: 'hidden'
+            padding: '2px', position: 'relative', overflow: 'hidden',
+            boxShadow: '0 0 20px rgba(212, 175, 55, 0.3)'
         }}>
-            <img src="https://i.ibb.co/Y7d5zS6k/IMG-8541.jpg" alt="Logo" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
-            <span className="csa-hat" style={{ position: 'absolute', top: '-12px', right: '-8px', fontSize: '28px', transform: 'rotate(15deg)' }}>🐎</span>
+            <img src="https://i.ibb.co/Y7d5zS6k/IMG-8541.jpg" alt="Logo" style={{ width: '100%', height: '100%', objectFit: 'cover', borderRadius: '50%', border: '2px solid var(--bg-base)' }} />
         </div>
-        <div className="csa-title">
-            <h1 className="gold-shimmer" style={{ margin: 0, fontSize: '26px', textTransform: 'uppercase', letterSpacing: '1px' }}>LOCKET GOLD TẾT 2026</h1>
-            <p style={{ margin: '6px 0 0', fontSize: '14px', color: 'var(--csa-muted)' }}>Xuân Bính Ngọ - Mã Đáo Thành Công</p>
+        <div className="app-title">
+            <h1 className="serif-title gold-text" style={{ margin: 0, fontSize: '32px', letterSpacing: '1px' }}>Locket Gold</h1>
+            <p style={{ margin: '4px 0 0', fontSize: '12px', color: 'var(--text-muted)', textTransform: 'uppercase', letterSpacing: '2px', fontWeight: 500 }}>Premium Access</p>
         </div>
     </header>
 );

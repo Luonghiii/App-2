@@ -14,48 +14,40 @@ const LuonghiiiCard: FC<LuonghiiiCardProps> = ({t}) => (
         position: 'relative',
         overflow: 'hidden'
     }}>
-        {/* Glow effect simplified */}
-        <div style={{
-            position: 'absolute', top: 0, left: 0, width: '100%', height: '100%',
-            background: 'linear-gradient(90deg, rgba(183,21,64,0.1), rgba(255,215,0,0.05))',
-            zIndex: 0, pointerEvents: 'none'
-        }}></div>
-        
         <div style={{
             width: '80px', height: '80px', flexShrink: 0,
             borderRadius: '50%', overflow: 'hidden',
-            border: '2px solid var(--csa-gold)',
-            boxShadow: '0 0 15px rgba(255,215,0,0.3)',
+            border: '2px solid var(--gold-accent)',
+            boxShadow: '0 0 15px rgba(212, 175, 55, 0.2)',
             zIndex: 1
         }}>
             <img src="https://i.ibb.co/Y7d5zS6k/IMG-8541.jpg" alt="Luonghiii" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
         </div>
         
         <div style={{ flex: 1, minWidth: 0, zIndex: 1 }}>
-            <h2 style={{ 
+            <h2 className="serif-title gold-text" style={{ 
                 margin: '0 0 6px 0', 
-                fontSize: '20px', 
+                fontSize: '22px', 
                 fontWeight: 'bold', 
-                color: 'var(--csa-gold)',
-                textTransform: 'uppercase'
+                letterSpacing: '1px'
             }}>Luonghiii</h2>
             
-            <p style={{ margin: '0 0 12px 0', fontSize: '14px', color: 'var(--csa-text)', opacity: 0.9 }}>
+            <p style={{ margin: '0 0 12px 0', fontSize: '13px', color: 'var(--text-muted)', lineHeight: 1.5 }}>
                 {t.luonghiiiDescription}
             </p>
             
             <div style={{ display: 'flex', gap: '15px' }}>
-                <a href="https://luonghiii.github.io/web/profile/" target="_blank" rel="noopener noreferrer" aria-label="Website" style={{ color: 'var(--csa-muted)', transition: '0.2s' }}>
-                    <GlobeIcon className="w-6 h-6 hover:text-white" />
+                <a href="https://luonghiii.github.io/web/profile/" target="_blank" rel="noopener noreferrer" aria-label="Website" style={{ color: 'var(--text-muted)', transition: 'color 0.2s' }} onMouseOver={(e) => e.currentTarget.style.color = 'var(--gold-accent)'} onMouseOut={(e) => e.currentTarget.style.color = 'var(--text-muted)'}>
+                    <GlobeIcon className="w-5 h-5" />
                 </a>
-                <a href="https://t.me/luonghiii1" target="_blank" rel="noopener noreferrer" aria-label="Telegram" style={{ color: 'var(--csa-muted)', transition: '0.2s' }}>
-                    <TelegramIcon className="w-6 h-6 hover:text-white" />
+                <a href="https://t.me/luonghiii1" target="_blank" rel="noopener noreferrer" aria-label="Telegram" style={{ color: 'var(--text-muted)', transition: 'color 0.2s' }} onMouseOver={(e) => e.currentTarget.style.color = 'var(--gold-accent)'} onMouseOut={(e) => e.currentTarget.style.color = 'var(--text-muted)'}>
+                    <TelegramIcon className="w-5 h-5" />
                 </a>
-                <a href="https://facebook.com/luonghiii" target="_blank" rel="noopener noreferrer" aria-label="Facebook" style={{ color: 'var(--csa-muted)', transition: '0.2s' }}>
-                    <FacebookIcon className="w-6 h-6 hover:text-white" />
+                <a href="https://facebook.com/luonghiii" target="_blank" rel="noopener noreferrer" aria-label="Facebook" style={{ color: 'var(--text-muted)', transition: 'color 0.2s' }} onMouseOver={(e) => e.currentTarget.style.color = 'var(--gold-accent)'} onMouseOut={(e) => e.currentTarget.style.color = 'var(--text-muted)'}>
+                    <FacebookIcon className="w-5 h-5" />
                 </a>
-                <a href="https://zalo.me/0916508081" target="_blank" rel="noopener noreferrer" aria-label="Zalo" style={{ color: 'var(--csa-muted)', transition: '0.2s' }}>
-                    <ZaloIcon className="w-6 h-6 hover:text-white" />
+                <a href="https://zalo.me/0916508081" target="_blank" rel="noopener noreferrer" aria-label="Zalo" style={{ color: 'var(--text-muted)', transition: 'color 0.2s' }} onMouseOver={(e) => e.currentTarget.style.color = 'var(--gold-accent)'} onMouseOut={(e) => e.currentTarget.style.color = 'var(--text-muted)'}>
+                    <ZaloIcon className="w-5 h-5" />
                 </a>
             </div>
         </div>

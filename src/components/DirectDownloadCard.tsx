@@ -12,28 +12,24 @@ const DirectDownloadCard: FC<DirectDownloadCardProps> = ({ t }) => {
         window.location.href = url;
     };
     
-    // Style constants for Gold/White theme
-    const cardTitleStyle = { color: 'var(--csa-gold)', fontSize: '20px', fontWeight: 'bold', marginBottom: '16px', textTransform: 'uppercase' } as React.CSSProperties;
-    const infoBoxStyle = { background: 'rgba(0, 184, 148, 0.15)', border: '1px solid rgba(0, 184, 148, 0.4)', borderRadius: '8px', padding: '12px', marginBottom: '12px', display: 'flex', gap: '8px', fontSize: '14px', color: '#fff' } as React.CSSProperties;
-    const warningBoxStyle = { background: 'rgba(255, 71, 87, 0.15)', border: '1px solid rgba(255, 71, 87, 0.4)', borderRadius: '8px', padding: '12px', marginBottom: '12px', display: 'flex', gap: '8px', fontSize: '14px', color: '#fff' } as React.CSSProperties;
-    const appRowStyle = { background: 'rgba(0, 0, 0, 0.3)', border: '1px solid rgba(255, 215, 0, 0.2)', borderRadius: '12px', padding: '16px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '16px', marginBottom: '10px' } as React.CSSProperties;
-    const buttonStyle = { background: 'var(--csa-gold)', color: '#800000', border: 'none', padding: '8px 16px', borderRadius: '8px', fontWeight: 'bold', cursor: 'pointer', fontSize: '14px', whiteSpace: 'nowrap' } as React.CSSProperties;
+    // Style constants for Dark Luxury theme
+    const cardTitleStyle = { color: 'var(--gold-accent)', fontSize: '20px', fontWeight: 'bold', marginBottom: '16px', textTransform: 'uppercase', letterSpacing: '1px' } as React.CSSProperties;
+    const infoBoxStyle = { background: 'rgba(16, 185, 129, 0.1)', border: '1px solid rgba(16, 185, 129, 0.2)', borderRadius: '8px', padding: '12px', marginBottom: '12px', display: 'flex', gap: '8px', fontSize: '13px', color: 'var(--text-main)' } as React.CSSProperties;
+    const warningBoxStyle = { background: 'rgba(239, 68, 68, 0.1)', border: '1px solid rgba(239, 68, 68, 0.2)', borderRadius: '8px', padding: '12px', marginBottom: '12px', display: 'flex', gap: '8px', fontSize: '13px', color: 'var(--text-main)' } as React.CSSProperties;
+    const appRowStyle = { background: 'rgba(0, 0, 0, 0.3)', border: '1px solid rgba(255, 255, 255, 0.08)', borderRadius: '12px', padding: '16px', display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '16px', marginBottom: '10px' } as React.CSSProperties;
+    const buttonStyle = { background: 'var(--gold-gradient)', color: '#000', border: 'none', padding: '8px 16px', borderRadius: '8px', fontWeight: 600, cursor: 'pointer', fontSize: '13px', whiteSpace: 'nowrap', textTransform: 'uppercase' } as React.CSSProperties;
 
     return (
-    <GlowingBorderCard
-        className="shadow-cyan-500/30"
-        contentClassName=""
-    >
         <div>
-             <h2 style={cardTitleStyle}>{t.directDownloadTitle}</h2>
+             <h2 className="serif-title gold-text" style={cardTitleStyle}>{t.directDownloadTitle}</h2>
              
              <div style={infoBoxStyle}>
-                <InfoIcon className="w-5 h-5 flex-shrink-0" style={{ color: 'var(--csa-green)' }} />
+                <InfoIcon className="w-5 h-5 flex-shrink-0" style={{ color: 'var(--success)' }} />
                 <span>{t.directDownloadNote}</span>
              </div>
              
              <div style={warningBoxStyle}>
-                <WarningIcon className="w-5 h-5 flex-shrink-0" style={{ color: 'var(--csa-red)' }} />
+                <WarningIcon className="w-5 h-5 flex-shrink-0" style={{ color: 'var(--danger)' }} />
                 <span>{t.deleteOldAppNote}</span>
              </div>
 
@@ -65,7 +61,6 @@ const DirectDownloadCard: FC<DirectDownloadCardProps> = ({ t }) => {
                 </div>
             </div>
         </div>
-    </GlowingBorderCard>
     );
 };
 

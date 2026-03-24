@@ -1,8 +1,8 @@
 import React, { FC } from 'react';
 
 const Footer: FC = () => (
-    <footer className="csa-footer" style={{ marginTop: '40px', textAlign: 'center', fontSize: '13px', color: 'var(--csa-muted)', paddingBottom: '20px', opacity: 0.7 }}>
-        © 2026 Luonghiii · Chúc mừng năm mới Xuân Bính Ngọ!
+    <footer className="app-footer" style={{ marginTop: '50px', textAlign: 'center', fontSize: '12px', color: 'var(--text-muted)', paddingBottom: '30px', opacity: 0.6, letterSpacing: '1px', textTransform: 'uppercase' }}>
+        © 2026 Luonghiii · Premium Access
     </footer>
 );
 
